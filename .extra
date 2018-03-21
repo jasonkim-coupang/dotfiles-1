@@ -107,7 +107,7 @@ export PATH="$PATH:$(yarn global bin)"
 #
 ###
 
-export HADOOP_HOME="/usr/local/apache-hive-2.1.1-bin"
+export HADOOP_HOME="/Users/jasonkim/local/hadoop-2.7.5"
 export PATH="$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin"
 export HADOOP_PREFIX=$HADOOP_HOME
 
@@ -117,5 +117,5 @@ export HADOOP_PREFIX=$HADOOP_HOME
 #
 ###
 
-export HIVE_HOME="/usr/local/hadoop-2.7.5"
+export HIVE_HOME="/Users/jasonkim/local/apache-hive-2.1.1-bin"
 export PATH="$HIVE_HOME/bin:$PATH"
