@@ -69,6 +69,7 @@ ssh-add -K ~/.ssh/gitlab &> /dev/null
 ssh-add -K ~/.ssh/id_rsa &> /dev/null
 ssh-add ~/.ssh/id_dsa &> /dev/null
 ssh-add ~/.ssh/github &> /dev/null
+ssh-add ~/.ssh/cmg_gitlab &> /dev/null
 
 ###
 #
