@@ -154,3 +154,8 @@ export PROMPT_COMMAND=enter_directory
 # Env
 export AIRFLOW_HOME=~/projects/airflow
 export PATH="$PATH:~/projects/flutter/bin"
+
+# java version to 1.8 by Luther
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_172`
+# TODO: export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
