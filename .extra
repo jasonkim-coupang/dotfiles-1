@@ -161,6 +161,7 @@ eval "$(pyenv init -)"
 
 ###
 # HOW TO HIDE THE ‘DEFAULT INTERACTIVE SHELL IS NOW ZSH’ MESSAGE ON MACOS 
+# https://www.saintlad.com/hide-default-interactive-shell-is-now-zsh-in-terminal-on-macos/
 ###
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
