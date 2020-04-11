@@ -1,0 +1,168 @@
+###
+#
+# rbenv
+#
+###
+
+# https://github.com/sstephenson/rbenv#uninstalling-rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+###
+#
+# golang
+#
+###
+
+if [ "$(uname)" == "Darwin" ]; then
+  :
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  export PATH=$PATH:/usr/local/go/bin
+fi
+
+export GOPATH=$HOME/projects/golang
+export PATH="$GOPATH/bin:$PATH"
+
+
+###
+#
+# git
+#
+###
+
+# Fast git commands
+alias gs='git status'
+alias gd='git diff'
+
+# Enable autocompletion on git commands and branch names
+# http://code-worrier.com/blog/autocomplete-git/
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+###
+#
+# node
+#
+###
+
+# Set node environment variable
+export NODE_ENV=development
+
+# Aliases for node
+alias mocha='node_modules/mocha/bin/mocha'
+alias gulp='node_modules/gulp/bin/gulp.js'
+
+# Use NVM
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+###
+#
+# ssh
+#
+###
+
+
+# add ssh-agents
+ssh-add -K ~/.ssh/gitlab.coupang.net &> /dev/null
+ssh-add ~/.ssh/id_dsa &> /dev/null
+ssh-add ~/.ssh/github &> /dev/null
+ssh-add ~/.ssh/cmg_gitlab &> /dev/null
+ssh-add ~/.ssh/cmg_github &> /dev/null
+ssh-add ~/.ssh/github_serv &> /dev/null
+
+
+###
+#
+# java environments
+#
+###
+
+if [ -x "$(command -v jenv)" ]; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
+
+###
+#
+# Ubuntu
+#
+###
+
+if [ "$(uname)" == "Darwin" ]; then
+  :
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+  alias open=nautilus
+fi
+
+###
+#
+# yarn
+#
+###
+
+export PATH="$PATH:$(yarn global bin)"
+
+###
+#
+# Hadoop
+#
+###
+
+export HADOOP_HOME="/Users/jasonkim/local/hadoop-2.7.5"
+export PATH="$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin"
+export HADOOP_PREFIX=$HADOOP_HOME
+
+###
+#
+# Hive
+#
+###
+
+export HIVE_HOME="/Users/jasonkim/local/apache-hive-2.1.1-bin"
+export PATH="$HIVE_HOME/bin:$PATH"
+
+
+###
+#
+# Run 'nvm use' automatically every time there's
+# a .nvmrc file in the directory. Also, revert to default
+# version when entering a directory without .nvmrc
+#
+# https://stackoverflow.com/a/50378304/536890
+###
+
+enter_directory() {
+if [[ $PWD == $PREV_PWD ]]; then
+    return
+fi
+
+PREV_PWD=$PWD
+if [[ -f ".nvmrc" ]]; then
+    nvm use
+    NVM_DIRTY=true
+elif [[ $NVM_DIRTY = true ]]; then
+    nvm use default
+    NVM_DIRTY=false
+fi
+}
+
+export PROMPT_COMMAND=enter_directory
+
+# Env
+export AIRFLOW_HOME=~/projects/airflow
+export PATH="$PATH:~/projects/flutter/bin"
+
+# java version to 1.8 by Luther
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_172`
+# TODO: export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
+###
+# pyenv
+###
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

@@ -1,7 +1,46 @@
-" Use the Solarized Dark theme
+"""
+" Start of vim-plug
+"""
+
+call plug#begin('~/.vim/plugged')
+
+" Code syntax highlighting
+Plug 'https://github.com/sheerun/vim-polyglot'
+
+" Quote and parenthese pairing
+" Plug 'https://github.com/jiangmiao/auto-pairs.git'
+
+" Use NERTTree instead of default dir viewer
+Plug 'https://github.com/scrooloose/nerdtree.git'
+
+" NERDTree always open
+Plug 'https://github.com/jistr/vim-nerdtree-tabs.git'
+
+" Mustache and handlebars syntax and other related features
+" Plug 'https://github.com/mustache/vim-mustache-handlebars.git'
+
+" Use Solarized theme
+Plug 'https://github.com/altercation/vim-colors-solarized.git'
+
+" Syntax highlighting for Vue.js
+Plug 'https://github.com/posva/vim-vue.git'
+
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+
+" adds Go language support for Vim
+Plug 'https://github.com/fatih/vim-go'
+
+call plug#end()
+
+"""
+" End of vim-plug
+"""
+
+" Enable Solarized
+syntax enable
 set background=dark
 colorscheme solarized
-let g:solarized_termtrans=1
 
 " Make Vim more useful
 set nocompatible
@@ -25,6 +64,7 @@ let mapleader=","
 set binary
 set noeol
 " Centralize backups, swapfiles and undo history
+set backupcopy=yes
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 if exists("&undodir")
@@ -40,14 +80,20 @@ set modelines=4
 " Enable per-directory .vimrc files and disable unsafe commands in them
 set exrc
 set secure
+
 " Enable line numbers
+" https://jeffkreeftmeijer.com/vim-number/
 set number
-" Enable syntax highlighting
-syntax on
+set nonumber  " turn line numbers off
+set number!   " toggle line numbers
+
 " Highlight current line
 set cursorline
 " Make tabs as wide as two spaces
 set tabstop=2
+set shiftwidth=2
+" Expand TABs to spaces
+set expandtab
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
@@ -75,13 +121,14 @@ set showmode
 set title
 " Show the (partial) command as it’s being typed
 set showcmd
-" Use relative line numbers
-if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
-endif
 " Start scrolling three lines before the horizontal window border
 set scrolloff=3
+" 80 column layout
+set colorcolumn=80
+" auto refresh
+set autoread
+" toggle paste mode
+set pastetoggle=<F2>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
@@ -104,3 +151,35 @@ if has("autocmd")
 	" Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 endif
+
+" remap jj to be an escape character
+imap jj <esc>
+
+" automatically strip trailing spaces on save in Vi and Vim
+" http://unix.stackexchange.com/questions/75430/how-to-automatically-strip-trailing-spaces-on-save-in-vi-and-vim
+autocmd BufWritePre * :%s/\s\+$//e
+
+" NERDTree show hidden dotfiles
+" http://stackoverflow.com/a/5057406/536890
+let NERDTreeShowHidden=1
+let g:nerdtree_tabs_open_on_console_startup=1
+
+" For vim-javascript
+" https://github.com/pangloss/vim-javascript/pull/199
+au BufNewFile,BufRead *.es6 setf javascript
+
+" For ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](bower_components|node_modules|target|dist)|(\.(swp|ico|git|svn))$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
+
+" Paste mode toggle
+" http://stackoverflow.com/a/2514520/536890
+set pastetoggle=<F3>
+
+
+
