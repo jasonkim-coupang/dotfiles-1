@@ -153,7 +153,7 @@ export PATH="$PATH:~/projects/flutter/bin"
 
 # java version to 1.8 by Luther
 # in my previous machine, i needed
-# export JAVA_HOME=`~/.jabba/jdk/adopt@1.8.0-242/Contents/Home -v 1.8.0_242`
+# export JAVA_HOME=`/usr/libexec/java_home -v 1.8.0_172`
 export JAVA_HOME=~/.jabba/jdk/adopt@1.8.0-242/Contents/Home
 
 ###
