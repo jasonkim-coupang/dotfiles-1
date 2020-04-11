@@ -99,14 +99,6 @@ fi
 
 ###
 #
-# yarn
-#
-###
-
-export PATH="$PATH:$(yarn global bin)"
-
-###
-#
 # Hadoop
 #
 ###
