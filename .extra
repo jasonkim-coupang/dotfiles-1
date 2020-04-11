@@ -73,6 +73,10 @@ ssh-add ~/.ssh/cmg_gitlab &> /dev/null
 ssh-add ~/.ssh/cmg_github &> /dev/null
 ssh-add ~/.ssh/github_serv &> /dev/null
 
+# In the new 202004 laptop
+ssh-add ~/.ssh/github_com_coupang &> /dev/null
+ssh-add ~/.ssh/github_coupang_com &> /dev/null
+ssh-add ~/.ssh/gitlab_coupang_net &> /dev/null
 
 ###
 #
