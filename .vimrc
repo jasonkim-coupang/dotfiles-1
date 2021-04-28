@@ -40,7 +40,7 @@ call plug#end()
 " Enable Solarized
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme default
 
 " Make Vim more useful
 set nocompatible
